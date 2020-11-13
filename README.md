@@ -1,18 +1,25 @@
 # Log file processing with Scala & Spark
+
 It is a Scala application that processes around 2.10<sup>6</sup> lines of log data and generate a report containing JSON objects of the following pattern:
 
 ```
 {data: <dd-MM-yyyy>, host_ip_count_by_date: {ip_1: count_1, ip_2: count_2 ...}, uri_destination: {uri: number_of_connections}
 ```
 
+
+
 ## Functionality
 
 1. Generate a report from raw log data as described above
 2. Provide the possibility to package the repository as a Jar to be submitted on Spark
 
+
+
 ## Installation
 
-This application is written in Scala and uses Spark. First check that Scala & Spark are installed on your computer ([here](https://www.scala-lang.org/download/), & [here](https://spark.apache.org/downloads.html)). Put Spark command in your PATH. For Scala prefer installation with the `sbt` compiler.
+This application is written in Scala and uses Spark. First check that Java, Scala & Spark are installed on your computer ([here](https://www.scala-lang.org/download/), & [here](https://spark.apache.org/downloads.html)). Put Spark command in your PATH. For Scala prefer installation with the `sbt` compiler.
+
+
 
 ## Usage
 
@@ -73,6 +80,8 @@ This will build, compile, run the Scala program and generate a  `logReport.txt` 
 }
 ```
 
+
+
 ## Testing
 
 You can run the test using the following command at the root directory:
@@ -83,7 +92,9 @@ sbt test
 
 > Running the test first (before doing `sbt run`) will build, compile and run the tests. 
 
-## Packaging the app as a jar
+
+
+## Packaging the app as a `jar`
 
 After running the app or the tests the structure of your folder should be updated:
 
@@ -104,7 +115,7 @@ After running the app or the tests the structure of your folder should be update
     └── test-reports
 ```
 
-Two new folders appeared as a result of the `sbt` build: **`project`** & **`target`**. In the project folder create a file named **`assembly.sbt`** and add the following line to it:
+Two new folders appeared as a result of the `sbt` build: **`project`** & **`target`**. In the **`project`** folder create a file named **`assembly.sbt`** and add the following line to it:
 
 ```scala
 addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "0.15.0")
@@ -131,6 +142,8 @@ sbt assembly
 
 This will then generated a `jar` file named **`Log-report-scala-sbt-assembly-fatjar-1.0.jar`** and located at **`target/scala-2.12`**
 
+
+
 ## Submitting the jar package to Spark
 
 When the `jar` has been generated you can run it with spark using the following command:
@@ -139,7 +152,9 @@ When the `jar` has been generated you can run it with spark using the following 
 spark-submit target/scala-2.12/Log-report-scala-sbt-assembly-fatjar-1.0.jar
 ```
 
+
+
 # Author
 
-Faouzi Braza
+Faouzi Braza, mail: [faouzi.braza@edu.dsti.institute](mailto:faouzi.braza@edu.dsti.institute)
 
